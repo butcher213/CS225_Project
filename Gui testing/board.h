@@ -4,4 +4,8 @@
 #define SQUARE_SIZE 64 // Pixels
 
 
+// Globalschar board[8][8];
+
+void updateFrame(HWND hwnd);
+
 #endif
