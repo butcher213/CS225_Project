@@ -1,0 +1,4 @@
+﻿  main.cpp
+p:\cs225_project-master\gui testing\main.cpp(193): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Gui testing.vcxproj -> P:\CS225_Project-master\x64\Debug\Gui testing.exe
+  Gui testing.vcxproj -> P:\CS225_Project-master\x64\Debug\Gui testing.pdb (Partial PDB)
