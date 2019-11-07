@@ -3,64 +3,24 @@
 
 extern char board[8][8];
 
-BlackPiece::BlackPiece(Coordinate coord, HWND wind) : Piece(coord, wind) {
+BlackPiece::BlackPiece(Coordinate coord) : Piece(coord) {
 	board[coord.squarex][coord.squarey] = 'b';
+	draw();
 }
 
-void BlackPiece::draw(HWND wind) {
-	HDC hdc = GetDC(wind);
-	Ellipse(hdc, coord.x, coord.y, coord.x + SQUARE_SIZE, coord.y + SQUARE_SIZE);
+void BlackPiece::draw() {
+	board[coord.x][coord.y] = 'b';
 }
-void BlackPiece::showMoves( HWND wind,Coordinate newCoord, bool jump) {
-	//bool movesAvailable = true;
 
-	HDC hdc = GetDC(wind);
-	SetDCBrushColor(hdc, RGB(0,100,8);
+void BlackPiece::showMoves(bool jump) {
 
-	Coordinate temp = newCoord;
-	int x = temp.squarex;
-	int y = temp.squarey;
-
-	if (x - 1 < 0 || x + 1 > 8 || y + 1 > 8) {
-		//guccigang
+	if (coord.squarex + LEFT >= 0 && coord.squarey + DOWN < 8) {
+		//look lower left to see if moves are available
+		lookDirection(LEFT, DOWN, BLACK_ENEMY);
 	}
-	else {
-		//test lowerLeft to see if piece is there to take
-		if (board[y + 1][x - 1] == 'r' || board[y + 1][x - 1] == 'R') {
-			if (x-2 >= 0 && y+2 <= 8 && board[x - 2][y + 2] == 'w') {
-				temp.squarex -= 2;
-				temp.squarey += 2;
-				temp.x -= 2 * SQUARE_SIZE;
-				temp.y += 2 * SQUARE_SIZE;
-				Rectangle(hdc, temp.x, temp.y, temp.x + SQUARE_SIZE, temp.y + SQUARE_SIZE);
-				this->showMoves(wind, temp, true);
-			}
-			//do nothing
-		}
-		else if (!jump && board[y + 1][x - 1] == 'w') {
-			Rectangle(hdc, temp.x, temp.y, temp.x + SQUARE_SIZE, temp.y + SQUARE_SIZE);
-		}
-
-		//test lowerRight to see if piece is there to take
-		if (board[y + 1][x + 1] == 'r' || board[y + 1][x + 1] == 'R') {
-			if (x + 2 >= 0 && y + 2 <= 8 && board[x + 2][y + 2] == 'w') {
-				temp.squarex += 2;
-				temp.squarey += 2;
-				temp.x += 2 * SQUARE_SIZE;
-				temp.y += 2 * SQUARE_SIZE;
-				Rectangle(hdc, temp.x, temp.y, temp.x + SQUARE_SIZE, temp.y + SQUARE_SIZE);
-				this->showMoves(wind, temp, true);
-			}
-			//do nothing
-		}
-		else if (!jump && board[y + 1][x - 1] == 'w') {
-			Rectangle(hdc, temp.x, temp.y, temp.x + SQUARE_SIZE, temp.y + SQUARE_SIZE);
-		}
+	if (coord.squarex + RIGHT < 8 && coord.squarey + DOWN < 8) {
+		//look lower right to see if moves are available
+		lookDirection(RIGHT, DOWN, BLACK_ENEMY);
 	}
 	
-
-}
-
-void BlackPiece::move(int squareX, int squareY) {
-
 }
