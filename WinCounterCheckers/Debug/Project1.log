@@ -1,0 +1,5 @@
+﻿  winnerFunction.cpp
+  numberofwins.cpp
+c:\users\loym3\desktop\project1\project1\numberofwins.cpp(13): error C2660: 'winner': function does not take 0 arguments
+c:\users\loym3\desktop\project1\project1\numberofwins.cpp(16): error C2660: 'winner': function does not take 0 arguments
+  Generating Code...
