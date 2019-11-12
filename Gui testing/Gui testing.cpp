@@ -1,16 +1,11 @@
 // Gui testing.cpp : Defines the entry point for the application.
 //
 
-#include<iostream>
-
 #include "stdafx.h"
 #include "Gui testing.h"
 #include "board.h"
-#include "mousehandling.h"
-#include<string>
-//using namespace std;
-
 #define MAX_LOADSTRING 100
+
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -23,7 +18,7 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
+int .l wWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPWSTR    lpCmdLine,
                      _In_ int       nCmdShow)
@@ -163,27 +158,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-	// Mouse click case
-	case WM_LBUTTONDOWN:
-		{
-		printf_s("hi");
-			
-			HDC hdc = GetDC(hWnd);
-			SetCapture(hWnd);
-			Coordinate mouseCoord = getMouseCoordinate(lParam);
-			TCHAR buf[100];
-			
-			sprintf_s(buf, _T("x: %d; y: %d sx: %d, sy : %d               "), mouseCoord.x, mouseCoord.y, mouseCoord.squarex, mouseCoord.squarey);
-			printf_s(buf);
-			if (mouseCoord.x > 0 && mouseCoord.y > 0) {
-				SetDCBrushColor(hdc, RGB(127, 127, 255));
-				Rectangle(hdc, mouseCoord.squarex * SQUARE_SIZE, mouseCoord.squarey * SQUARE_SIZE, mouseCoord.squarex * SQUARE_SIZE + SQUARE_SIZE, mouseCoord.squarey*SQUARE_SIZE + SQUARE_SIZE);
-			}
-			//TCHAR greeting[] = _T(x);
-			// TextOut(Frame, x, y, text, _tcslen
-			TextOut(hdc, 50, 5, buf, _tcslen(buf));
-			break;
-		}
     case WM_PAINT:
         {
             PAINTSTRUCT ps;
@@ -191,6 +165,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // TODO: Add any drawing code that uses hdc here...
 			TCHAR greeting[] = _T("Hello world!");
 			// TextOut(Frame, x, y, text, _tcslen
+			TextOut(hdc, 50, 5, greeting, _tcslen(greeting));
 			SelectObject(hdc, GetStockObject(DC_BRUSH));
 			int squareCount = 0;
 			for (int row = 0; row < 8; row++) {
@@ -204,7 +179,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 					
 					Rectangle(hdc, row * SQUARE_SIZE, column * SQUARE_SIZE, row * SQUARE_SIZE + SQUARE_SIZE ,column*SQUARE_SIZE+SQUARE_SIZE);
 					squareCount++;
-					
 				}
 				squareCount++;
 			}

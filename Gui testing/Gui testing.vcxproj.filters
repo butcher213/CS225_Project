@@ -33,21 +33,12 @@
     <ClInclude Include="board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="mousehandling.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Gui testing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="mousehandling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
